@@ -39,35 +39,36 @@ public class MainNotebook {
         System.out.println("2 - Объем ЖД");
         System.out.println("3 - Операционная система");
         System.out.println("4 - Цвет ");
+        System.out.println("0 - Окончание работы. ");
 
         Scanner sc = new Scanner(System.in);
         String command = sc.nextLine();
 
-        switch (command) {
-            case ("1"):
-                System.out.println("Вы можете ввести желаемый объем оперативной памяти и вам будут представлены варианты ноутбуков такого объема и выше.");
-                filterRamInGB(notebooks, sc.nextInt());
-                break;
-            case ("2"):
-                System.out.println("Вы можете ввести желаемый объем жесткого диска и вам будут представлены варианты ноутбуков такого объема и выше.");
-                filterValueHDD(notebooks, sc.nextInt());
-                break;
-            case ("3"):
-                System.out.println("Вы можете ввести название вашей любимой операционной системы (в кавычках).");
-                String favoriteOperatingSystem = sc.nextLine();
-                System.out.println("Вы ввели: " + favoriteOperatingSystem);
-                filterOperatingSystem(notebooks, favoriteOperatingSystem);
-                break;
-            case ("4"):
-                System.out.println("Вы можете ввести название вашего любимого цвета (в кавычках).");
-                String favoriteColor = String.valueOf(sc.nextLine());
-                filterColor(notebooks, favoriteColor);
-                break;
-            case ("0"):
-                return;
-        }
+            switch (command) {
+                case ("1"):
+                    System.out.println("Вы можете ввести желаемый объем оперативной памяти и вам будут представлены варианты ноутбуков такого объема и выше.");
+                    filterRamInGB(notebooks, sc.nextInt());
+                    break;
+                case ("2"):
+                    System.out.println("Вы можете ввести желаемый объем жесткого диска и вам будут представлены варианты ноутбуков такого объема и выше.");
+                    filterValueHDD(notebooks, sc.nextInt());
+                    break;
+                case ("3"):
+                    System.out.println("Вы можете ввести название вашей любимой операционной системы.");
+                    String favoriteOperatingSystem = sc.nextLine();
+                    filterOperatingSystem(notebooks, favoriteOperatingSystem);
+                    break;
+                case ("4"):
+                    System.out.println("Вы можете ввести название вашего любимого цвета.");
+                    String favoriteColor = String.valueOf(sc.nextLine());
+                    filterColor(notebooks, favoriteColor);
+                    break;
+                case ("0"):
+                    return;
+            }
+            System.out.println("Программа фильтра завершилась успешно!");
 
-        System.out.println("Программа фильтра завершилась успешно!");
+
     }
 
 // рабочий код по поиску оперативной памяти

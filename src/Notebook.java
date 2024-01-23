@@ -70,12 +70,11 @@ public class Notebook {
     @Override
     public String toString() {
         return "Notebook{" +
-                "name='" + name + '\'' +
-                ", ramInGB=" + ramInGB +
-                ", ramInGB=" + ramInGB +
-                ", valueHDD=" + valueHDD +
-                ", operatingSystem=" + operatingSystem +
-                ", color='" + color + '\'' +
+                "Наименование: '" + name + '\'' +
+                ", оперативная память: " + ramInGB +
+                ", объём жесткого диска: " + valueHDD +
+                ", операционная система: " + operatingSystem +
+                ", цвет корпуса: '" + color + '\'' +
                 '}';
     }
 
