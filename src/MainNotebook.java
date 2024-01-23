@@ -10,12 +10,10 @@ public class MainNotebook {
         Notebook notebook6 = new Notebook("MacPro 2000", 64, 1000000, "Windows 11", "gold");
 
         Set<Notebook> notebooks = new HashSet<>(Arrays.asList(notebook1, notebook2, notebook3, notebook4, notebook5, notebook6));
-        //printAllNotebook(notebooks);
-        //filterNotebook(notebooks);
-        //filterColor(notebooks, "white");
-        //filterOperatingSystem(notebooks, "Windows XP");
-        //filterValueHDD(notebooks, 10000);
-        filterRamInGB(notebooks,32);
+        printAllNotebook(notebooks);
+        filterNotebook(notebooks);
+
+        System.out.println("А вот это конец мэйна!");
     }
 
 
@@ -38,22 +36,33 @@ public class MainNotebook {
 
         Scanner sc = new Scanner(System.in);
         int commandInt = sc.nextInt();
+
         switch (commandInt) {
             case (1):
-                //тут будет метод который сортирует по критерию ramInGB и выдает этот размер и больше
-            case (2):
-                System.out.println("Вы можете ввести желаемый объем жесткого диска и вам будут представлены варианты ноутбуков такого объема и выше");
-                // тут будет метод который сортирует по valueHDD и выдает такой и больше
-            case (3):
-                // тут будт метод который сортирует по operatingSystem и выдает ровно такой
-            case (4):
-                //тут будет метод который сортирует по color и выдает ровно такой
-
-            case (0):
+                System.out.println("Вы можете ввести желаемый объем оперативной памяти и вам будут представлены варианты ноутбуков такого объема и выше.");
+                filterRamInGB(notebooks, sc.nextInt());
                 break;
+            case (2):
+                System.out.println("Вы можете ввести желаемый объем жесткого диска и вам будут представлены варианты ноутбуков такого объема и выше.");
+                filterValueHDD(notebooks, sc.nextInt());
+                break;
+            case (3):
+                System.out.println("Вы можете ввести название вашей любимой операционной системы (в кавычках).");
+
+                filterOperatingSystem(notebooks, sc.nextLine());
+                break;
+            case (4):
+                System.out.println("Вы можете ввести название вашего любимого цвета (в кавычках).");
+                filterColor(notebooks, sc.nextLine());
+                break;
+            case (0):
+                return;
         }
+
+        System.out.println("Программа фильтра завершилась успешно!");
     }
 
+// рабочий код по поиску оперативной памяти
     public static void filterRamInGB(Set<Notebook> notebooks, int favoriteRamInGB) {
         System.out.println("Проверка размера оперативной памяти");
         for (Notebook note : notebooks) {
@@ -63,7 +72,7 @@ public class MainNotebook {
             }
         }
     }
-
+//рабочий код по поиску размера жесткого диска
     public static void filterValueHDD(Set<Notebook> notebooks, int favoriteValueHDD) {
         System.out.println("Проверка размера жесткого диска");
         for (Notebook note : notebooks) {
@@ -73,8 +82,6 @@ public class MainNotebook {
             }
         }
     }
-
-
 
     // рабочий код по поиску операционной системы
     public static void filterOperatingSystem(Set<Notebook> notebooks, String favoriteOperatingSystem) {
