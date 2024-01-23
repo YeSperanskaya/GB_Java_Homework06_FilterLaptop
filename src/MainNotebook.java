@@ -13,7 +13,9 @@ public class MainNotebook {
         //printAllNotebook(notebooks);
         //filterNotebook(notebooks);
         //filterColor(notebooks, "white");
-        filterOperatingSystem(notebooks, "Windows XP");
+        //filterOperatingSystem(notebooks, "Windows XP");
+        //filterValueHDD(notebooks, 10000);
+        filterRamInGB(notebooks,32);
     }
 
 
@@ -40,6 +42,7 @@ public class MainNotebook {
             case (1):
                 //тут будет метод который сортирует по критерию ramInGB и выдает этот размер и больше
             case (2):
+                System.out.println("Вы можете ввести желаемый объем жесткого диска и вам будут представлены варианты ноутбуков такого объема и выше");
                 // тут будет метод который сортирует по valueHDD и выдает такой и больше
             case (3):
                 // тут будт метод который сортирует по operatingSystem и выдает ровно такой
@@ -51,6 +54,25 @@ public class MainNotebook {
         }
     }
 
+    public static void filterRamInGB(Set<Notebook> notebooks, int favoriteRamInGB) {
+        System.out.println("Проверка размера оперативной памяти");
+        for (Notebook note : notebooks) {
+            int existRamInGB = note.getRamInGB();
+            if (existRamInGB >= favoriteRamInGB) {
+                System.out.println(note);
+            }
+        }
+    }
+
+    public static void filterValueHDD(Set<Notebook> notebooks, int favoriteValueHDD) {
+        System.out.println("Проверка размера жесткого диска");
+        for (Notebook note : notebooks) {
+            int existValueHDD = note.getValueHDD();
+            if (existValueHDD >= favoriteValueHDD) {
+                System.out.println(note);
+            }
+        }
+    }
 
 
 

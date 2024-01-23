@@ -64,7 +64,7 @@ public class Notebook {
     public void setOperatingSystem(String operatingSystem) {this.operatingSystem = operatingSystem;}
 
     public String getColor() {return color;}
-    //public String setColor(String color) {this.color = color;}
+    public void setColor(String color) {this.color = color;}
 
 
     @Override
