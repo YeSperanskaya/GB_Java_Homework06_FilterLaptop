@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Arrays;
 
 public class MainNotebook {
     public static void main(String[] args) {
@@ -12,7 +15,10 @@ public class MainNotebook {
         Set<Notebook> notebooks = new HashSet<>(Arrays.asList(notebook1, notebook2, notebook3, notebook4, notebook5, notebook6));
         printAllNotebook(notebooks);
         filterNotebook(notebooks);
-
+        //Scanner sc = new Scanner(System.in);
+        //System.out.println("проверка:");
+        //String str = sc.nextLine();
+        //System.out.println(str);
         System.out.println("А вот это конец мэйна!");
     }
 
@@ -35,27 +41,29 @@ public class MainNotebook {
         System.out.println("4 - Цвет ");
 
         Scanner sc = new Scanner(System.in);
-        int commandInt = sc.nextInt();
+        String command = sc.nextLine();
 
-        switch (commandInt) {
-            case (1):
+        switch (command) {
+            case ("1"):
                 System.out.println("Вы можете ввести желаемый объем оперативной памяти и вам будут представлены варианты ноутбуков такого объема и выше.");
                 filterRamInGB(notebooks, sc.nextInt());
                 break;
-            case (2):
+            case ("2"):
                 System.out.println("Вы можете ввести желаемый объем жесткого диска и вам будут представлены варианты ноутбуков такого объема и выше.");
                 filterValueHDD(notebooks, sc.nextInt());
                 break;
-            case (3):
+            case ("3"):
                 System.out.println("Вы можете ввести название вашей любимой операционной системы (в кавычках).");
-
-                filterOperatingSystem(notebooks, sc.nextLine());
+                String favoriteOperatingSystem = sc.nextLine();
+                System.out.println("Вы ввели: " + favoriteOperatingSystem);
+                filterOperatingSystem(notebooks, favoriteOperatingSystem);
                 break;
-            case (4):
+            case ("4"):
                 System.out.println("Вы можете ввести название вашего любимого цвета (в кавычках).");
-                filterColor(notebooks, sc.nextLine());
+                String favoriteColor = String.valueOf(sc.nextLine());
+                filterColor(notebooks, favoriteColor);
                 break;
-            case (0):
+            case ("0"):
                 return;
         }
 
