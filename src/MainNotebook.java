@@ -15,11 +15,6 @@ public class MainNotebook {
         Set<Notebook> notebooks = new HashSet<>(Arrays.asList(notebook1, notebook2, notebook3, notebook4, notebook5, notebook6));
         printAllNotebook(notebooks);
         filterNotebook(notebooks);
-        //Scanner sc = new Scanner(System.in);
-        //System.out.println("проверка:");
-        //String str = sc.nextLine();
-        //System.out.println(str);
-        System.out.println("А вот это конец мэйна!");
     }
 
 
@@ -60,15 +55,12 @@ public class MainNotebook {
                     break;
                 case ("4"):
                     System.out.println("Вы можете ввести название вашего любимого цвета.");
-                    String favoriteColor = String.valueOf(sc.nextLine());
+                    String favoriteColor = sc.nextLine();
                     filterColor(notebooks, favoriteColor);
                     break;
                 case ("0"):
                     return;
             }
-            System.out.println("Программа фильтра завершилась успешно!");
-
-
     }
 
 // рабочий код по поиску оперативной памяти
