@@ -15,8 +15,6 @@ public class MainNotebook {
         Notebook notebook6 = new Notebook("MacPro 2000", 64, 1000000, "Windows 11", "gold");
 
         Set<Notebook> notebooks = new HashSet<>(Arrays.asList(notebook1, notebook2, notebook3, notebook4, notebook5, notebook6));
-        //printAllNotebook(notebooks);
-        //filterNotebook(notebooks);
         System.out.println(filtrNotebook);
         filter(notebooks);
     }
@@ -78,8 +76,8 @@ public class MainNotebook {
                 case ("7"):
                     filtrNotebook.setRamInGB(0);
                     filtrNotebook.setValueHDD(0);
-                    filtrNotebook.setOperatingSystem(null);
-                    filtrNotebook.setColor(null);
+                    filtrNotebook.setOperatingSystem("null");
+                    filtrNotebook.setColor("null");
                     System.out.println(filtrNotebook);
                     System.out.println("Введите следующую команду");
                     command = sc.nextLine();
@@ -102,28 +100,31 @@ public class MainNotebook {
             }
 
         }
-        System.out.println("Выход из вайла");
         System.out.println(filtrNotebook);
-        System.out.println("проверка поиска");
         findNotebooksWithFiltr(notebooks);
-
     }
 
     public static void findNotebooksWithFiltr(Set<Notebook> notebooks) {
-        System.out.println("Вам могут подойти следующие ноутбуки:");
+
         Set<Notebook> result = new HashSet<>();
         for (Notebook note : notebooks) {
             if (filtrNotebook.getRamInGB() <= note.getRamInGB() || filtrNotebook.getRamInGB() == 0) {
                 if (filtrNotebook.getValueHDD() <= note.getValueHDD() || filtrNotebook.getValueHDD() == 0) {
                     if (filtrNotebook.getOperatingSystem().equals(note.getOperatingSystem()) || filtrNotebook.getOperatingSystem().equals("null")) {
                         if (filtrNotebook.getColor().equals(note.getColor()) || filtrNotebook.getColor().equals("null")) {
-                            System.out.println(note);
+                            result.add(note);
                         }
                     }
                 }
             }
         }
-        //System.out.println(result);
+        if (result.isEmpty()) {
+            System.out.println("К сожалению у нас для вас ничего нет(((");
+        } else {
+            System.out.println("Вам могут подойти следующие ноутбуки:");
+            printAllNotebook(result);
+        }
+
         System.out.println("Конец поиска!");
     }
 
@@ -138,90 +139,3 @@ public class MainNotebook {
         System.out.println();
     }
 }
-
-
-
-/*
-    public static void filterNotebook(Set<Notebook> notebooks) {
-        System.out.println("Есди вы хотите подобрать определнный ноутбук, то введите цифру, соответствующую необходимому критерию:");
-        System.out.println("1 - ОЗУ");
-        System.out.println("2 - Объем ЖД");
-        System.out.println("3 - Операционная система");
-        System.out.println("4 - Цвет ");
-        System.out.println("0 - Окончание работы. ");
-
-        Scanner sc = new Scanner(System.in);
-        String command = sc.nextLine();
-
-            switch (command) {
-                case ("1"):
-                    System.out.println("Вы можете ввести желаемый объем оперативной памяти и вам будут представлены варианты ноутбуков такого объема и выше.");
-                    filterRamInGB(notebooks, sc.nextInt());
-                    break;
-                case ("2"):
-                    System.out.println("Вы можете ввести желаемый объем жесткого диска и вам будут представлены варианты ноутбуков такого объема и выше.");
-                    filterValueHDD(notebooks, sc.nextInt());
-                    break;
-                case ("3"):
-                    System.out.println("Вы можете ввести название вашей любимой операционной системы.");
-                    String favoriteOperatingSystem = sc.nextLine();
-                    filterOperatingSystem(notebooks, favoriteOperatingSystem);
-                    break;
-                case ("4"):
-                    System.out.println("Вы можете ввести название вашего любимого цвета.");
-                    String favoriteColor = sc.nextLine();
-                    filterColor(notebooks, favoriteColor);
-                    break;
-                case ("0"):
-                    return;
-            }
-    }
-
-// рабочий код по поиску оперативной памяти
-    public static void filterRamInGB(Set<Notebook> notebooks, int favoriteRamInGB) {
-        System.out.println("Проверка размера оперативной памяти");
-        for (Notebook note : notebooks) {
-            int existRamInGB = note.getRamInGB();
-            if (existRamInGB >= favoriteRamInGB) {
-                System.out.println(note);
-            }
-        }
-    }
-//рабочий код по поиску размера жесткого диска
-    public static void filterValueHDD(Set<Notebook> notebooks, int favoriteValueHDD) {
-        System.out.println("Проверка размера жесткого диска");
-        for (Notebook note : notebooks) {
-            int existValueHDD = note.getValueHDD();
-            if (existValueHDD >= favoriteValueHDD) {
-                System.out.println(note);
-            }
-        }
-    }
-
-    // рабочий код по поиску операционной системы
-    public static void filterOperatingSystem(Set<Notebook> notebooks, String favoriteOperatingSystem) {
-        System.out.println("Проверка операционной системы");
-        for (Notebook note : notebooks) {
-            String existOperatingSystem = note.getOperatingSystem();
-            if (existOperatingSystem.equals(favoriteOperatingSystem)) {
-                System.out.println(note);
-            }
-        }
-    }
-
-
-    // рабочий код по поиску цвета ноутбука!
-    public static void filterColor(Set<Notebook> notebooks, String favoriteColor) {
-        System.out.println("Проверка цвета");
-        for (Notebook note : notebooks) {
-            String existColor = note.getColor();
-            if (existColor.equals(favoriteColor)) {
-                System.out.println(note);
-            }
-        }
-    }
-
-
-}
-
-     */
