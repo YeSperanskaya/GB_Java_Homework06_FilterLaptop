@@ -15,21 +15,12 @@ public class MainNotebook {
         Notebook notebook6 = new Notebook("MacPro 2000", 64, 1000000, "Windows 11", "gold");
 
         Set<Notebook> notebooks = new HashSet<>(Arrays.asList(notebook1, notebook2, notebook3, notebook4, notebook5, notebook6));
-        System.out.println(filtrNotebook);
+
         filter(notebooks);
     }
 
     public static void filter(Set<Notebook> notebooks) {
-        System.out.println("Есди вы хотите подобрать определнный ноутбук, то введите цифру, соответствующую необходимому критерию:");
-        System.out.println("1 - ОЗУ");
-        System.out.println("2 - Объем ЖД");
-        System.out.println("3 - Операционная система");
-        System.out.println("4 - Цвет ");
-        System.out.println("5 - вы можете посмотреть все ноутбуки, которые у нас есть");
-        System.out.println("7 - очистить фильтр");
-        System.out.println("9 - еще раз посмотреть инструкцию");
-        System.out.println("0 - результат поиска");
-
+        information();
         Scanner sc = new Scanner(System.in);
         String command = sc.nextLine();
         boolean endOfFiltr = true;
@@ -82,14 +73,7 @@ public class MainNotebook {
                     System.out.println("Введите следующую команду");
                     command = sc.nextLine();
                 case ("9"):
-                    System.out.println("Есди вы хотите подобрать определнный ноутбук, то введите цифру, соответствующую необходимому критерию:");
-                    System.out.println("1 - ОЗУ");
-                    System.out.println("2 - Объем ЖД");
-                    System.out.println("3 - Операционная система");
-                    System.out.println("4 - Цвет ");
-                    System.out.println("7 - очистить фильтр");
-                    System.out.println("9 - еще раз посмотреть инструкцию");
-                    System.out.println("0 - результат поиска");
+                    information();
                     command = sc.nextLine();
                     break;
                 case ("0"):
@@ -97,6 +81,8 @@ public class MainNotebook {
                     break;
                 default:
                     System.out.println("Вы ввели неверную команду, чтобы посмотреть инструкцию введите 9");
+                    command = sc.nextLine();
+                    break;
             }
 
         }
@@ -137,5 +123,17 @@ public class MainNotebook {
             System.out.println(note);
         }
         System.out.println();
+    }
+
+    public static void information() {
+        System.out.println("Есди вы хотите подобрать определнный ноутбук, то введите цифру, соответствующую необходимому критерию:");
+        System.out.println("1 - ОЗУ");
+        System.out.println("2 - Объем ЖД");
+        System.out.println("3 - Операционная система");
+        System.out.println("4 - Цвет ");
+        System.out.println("5 - вы можете посмотреть все ноутбуки, которые у нас есть");
+        System.out.println("7 - очистить фильтр");
+        System.out.println("9 - еще раз посмотреть инструкцию");
+        System.out.println("0 - результат поиска");
     }
 }
