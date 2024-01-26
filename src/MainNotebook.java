@@ -26,7 +26,6 @@ public class MainNotebook {
         boolean endOfFiltr = true;
         while (endOfFiltr == true) {
             switch (command) {
-                // тут  меняю данные в экземпляре фильтр нотебук
                 case ("1"):
                     System.out.println("Вы можете ввести желаемый объем оперативной памяти и вам будут представлены варианты ноутбуков такого объема и выше.");
                     int findRamInGB = Integer.valueOf(sc.nextLine());
@@ -86,6 +85,7 @@ public class MainNotebook {
             }
 
         }
+        sc.close();
         System.out.println(filtrNotebook);
         findNotebooksWithFiltr(notebooks);
     }
